@@ -47,6 +47,7 @@ class Constructor(function.Function):
 
     def generateBody(self, addin):
         """Generate source code for function body."""
+
         return Constructor.funcCtorBuffer_ % {
             'functionName' : self.name_,
             'idStrip' : addin.idStrip(self.parameterList_),
@@ -56,7 +57,8 @@ class Constructor(function.Function):
             'namespaceObjects' : environment.config().namespaceObjects(),
             'overwriteVariable' : addin.overwriteVariable(),
             'repositoryClass' : addin.repositoryClass(),
-            'voParameters' : self.parameterList_.generate(addin.voCall()) }
+            'voParameters' : self.parameterList_.generate(addin.voCall()),
+            'baseClass' : self.baseClass() }
 
     def libraryFunction(self):
         """Return the name of the function in the underlying application
@@ -75,7 +77,7 @@ class Constructor(function.Function):
     def serialize(self, serializer):
         """Load/unload class state to/from serializer object."""
         super(Constructor, self).serialize(serializer)
-        serializer.serializeProperty(self, common.LIBRARY_FUNCTION)
+        serializer.serializeProperty(self, common.LIBRARY_FUNCTION)  
         serializer.serializeAttributeBoolean(self, common.CONST)
         serializer.serializeProperty(self, common.PROCESSOR_NAME, "")
 
