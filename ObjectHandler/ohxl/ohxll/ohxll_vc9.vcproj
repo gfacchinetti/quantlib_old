@@ -78,7 +78,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib log4cxxD.lib"
-				OutputFile="..\..\xll\ObjectHandler-xll-vc90-mt-gd-1_5_0.xll"
+				OutputFile="..\..\xll\ObjectHandler-xll-vc90-mt-gd.xll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib;..\..\..\log4cxx\msvc\lib;&quot;C:\Projects\CVA\3rdPartyLibs\apache-log4cxx-0.10.0\projects\Debug&quot;"
@@ -179,7 +179,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib log4cxx.lib"
-				OutputFile="..\..\xll\ObjectHandler-xll-vc90-mt-1_5_0.xll"
+				OutputFile="..\..\xll\ObjectHandler-xll-vc90-mt.xll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib;..\..\..\log4cxx\msvc\lib;&quot;C:\Projects\CVA\3rdPartyLibs\apache-log4cxx-0.10.0\projects\Release&quot;"
