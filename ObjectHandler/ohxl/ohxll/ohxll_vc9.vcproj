@@ -83,10 +83,10 @@
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib;..\..\..\log4cxx\msvc\lib;&quot;C:\Projects\3rdPartyLibs\apache-log4cxx-0.10.0\projects\Debug\32&quot;"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="..\..\xll\ObjectHandler-xll-vc90-mt-gd-1_5_0.pdb"
+				ProgramDatabaseFile="..\..\xll\ObjectHandler-xll-vc90-mt-gd-1_6_0.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary="..\..\lib\ObjectHandler-xll-vc90-mt-gd-1_5_0.lib"
+				ImportLibrary="..\..\lib\ObjectHandler-xll-vc90-mt-gd-1_6_0.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -184,11 +184,11 @@
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib;..\..\..\log4cxx\msvc\lib;&quot;C:\Projects\3rdPartyLibs\apache-log4cxx-0.10.0\projects\Release\32&quot;"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="..\..\xll\ObjectHandler-xll-vc90-mt-1_5_0.pdb"
+				ProgramDatabaseFile="..\..\xll\ObjectHandler-xll-vc90-mt-1_6_0.pdb"
 				OptimizeReferences="2"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary="..\..\lib\ObjectHandler-xll-vc90-mt-1_5_0.lib"
+				ImportLibrary="..\..\lib\ObjectHandler-xll-vc90-mt-1_6_0.lib"
 				TargetMachine="1"
 			/>
 			<Tool

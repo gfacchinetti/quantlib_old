@@ -178,7 +178,7 @@ namespace QuantLib {
                                        basket_->weights().end(),
                                        durations_.begin(), 0.0);
 
-        Natural settlDays = 3;
+        Natural settlDays = 2;
         DayCounter fixedDayCount = swaps_[0]->fixedDayCount();
         equivalentSwapIndex_ = nSwaps_-1;
         swapRates_[0]= swaps_[0]->fairRate();
