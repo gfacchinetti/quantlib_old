@@ -48,7 +48,7 @@ namespace QuantLib {
         MakeOIS& withType(OvernightIndexedSwap::Type type);
         MakeOIS& withNominal(Real n);
 
-        MakeOIS& withSettlementDays(Natural settlDays);
+        MakeOIS& withSettlementDays(Natural settlementDays);
         MakeOIS& withEffectiveDate(const Date&);
         MakeOIS& withTerminationDate(const Date&);
         MakeOIS& withRule(DateGeneration::Rule r);
@@ -70,13 +70,13 @@ namespace QuantLib {
         Rate fixedRate_;
         Period forwardStart_;
 
-        Natural settlDays_;
+        Natural settlementDays_;
         Date effectiveDate_, terminationDate_;
         Calendar calendar_;
 
         Frequency paymentFrequency_;
         DateGeneration::Rule rule_;
-        bool endOfMonth_;
+        bool endOfMonth_, isDefaultEOM_;
 
         OvernightIndexedSwap::Type type_;
         Real nominal_;

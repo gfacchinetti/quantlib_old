@@ -1,7 +1,8 @@
 /* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
- Copyright (C) 2009, 2014 Ferdinando Ametrano
+ Copyright (C) 2009, 2014, 2015 Ferdinando Ametrano
+ Copyright (C) 2015 Paolo Mazzocchi
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -32,11 +33,12 @@ namespace QuantLib {
                      const Period& forwardStart)
     : swapTenor_(swapTenor), overnightIndex_(overnightIndex),
       fixedRate_(fixedRate), forwardStart_(forwardStart),
-      settlDays_(2),
+      settlementDays_(2),
       calendar_(overnightIndex->fixingCalendar()),
       paymentFrequency_(Annual),
       rule_(DateGeneration::Backward),
-      endOfMonth_(false),
+      // any value here for endOfMonth_ would not be actually used
+      isDefaultEOM_(true),
       type_(OvernightIndexedSwap::Payer), nominal_(1.0),
       overnightSpread_(0.0),
       fixedDayCount_(overnightIndex->dayCounter()) {}
@@ -57,7 +59,7 @@ namespace QuantLib {
             // then move to the next business day
             refDate = calendar_.adjust(refDate);
             Date spotDate = calendar_.advance(refDate,
-                                              settlDays_*Days);
+                                              settlementDays_*Days);
             startDate = spotDate+forwardStart_;
             if (forwardStart_.length()<0)
                 startDate = calendar_.adjust(startDate, Preceding);
@@ -65,16 +67,19 @@ namespace QuantLib {
                 startDate = calendar_.adjust(startDate, Following);
         }
 
-        Date endDate;
-        if (terminationDate_ != Date()) {
-            endDate = terminationDate_;
-        } else {
-            if (endOfMonth_ && startDate.isEndOfMonth(startDate)) {
-                endDate = calendar_.advance(startDate, swapTenor_,
-                    ModifiedFollowing, endOfMonth_);
-            } else {
-                endDate = startDate+swapTenor_;
-            }
+        // OIS end of month default
+        bool usedEndOfMonth = 
+            isDefaultEOM_ ? calendar_.isEndOfMonth(startDate) : endOfMonth_;
+
+        Date endDate = terminationDate_;
+        if (endDate == Date()) {
+            if (usedEndOfMonth)
+                endDate = calendar_.advance(startDate,
+                                            swapTenor_,
+                                            ModifiedFollowing,
+                                            usedEndOfMonth);
+            else
+                endDate = startDate + swapTenor_;
         }
 
         Schedule schedule(startDate, endDate,
@@ -83,7 +88,7 @@ namespace QuantLib {
                           ModifiedFollowing,
                           ModifiedFollowing,
                           rule_,
-                          endOfMonth_);
+                          usedEndOfMonth);
 
         Rate usedFixedRate = fixedRate_;
         if (fixedRate_ == Null<Rate>()) {
@@ -142,8 +147,8 @@ namespace QuantLib {
         return *this;
     }
 
-    MakeOIS& MakeOIS::withSettlementDays(Natural settlDays) {
-        settlDays_ = settlDays;
+    MakeOIS& MakeOIS::withSettlementDays(Natural settlementDays) {
+        settlementDays_ = settlementDays;
         effectiveDate_ = Date();
         return *this;
     }
@@ -194,6 +199,7 @@ namespace QuantLib {
 
     MakeOIS& MakeOIS::withEndOfMonth(bool flag) {
         endOfMonth_ = flag;
+        isDefaultEOM_ = false;
         return *this;
     }
 
