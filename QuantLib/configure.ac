@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-AC_INIT([QuantLib], [1.7],
+AC_INIT([QuantLib], [1.7.1],
         [quantlib-dev@lists.sourceforge.net],
         [QuantLib])
 AC_PREREQ(2.62)
@@ -252,6 +252,28 @@ if test "$ql_use_sessions" = "yes" ; then
              [Define this if you want to enable sessions.])
 fi
 AC_MSG_RESULT([$ql_use_sessions])
+
+AC_MSG_CHECKING([whether to enable thread-safe observer pattern])
+AC_ARG_ENABLE([thread-safe-observer-pattern],
+              AC_HELP_STRING([--enable-thread-safe-observer-pattern],
+                             [If enabled, thread-safe version of the 
+                              observer pattern will be used. You should 
+                              enable it if you want to use QuantLib 
+                              via the SWIG layer within the JVM or .NET 
+                              eco system or any environment with an 
+                              async garbage collector.]),
+              [ql_use_tsop=$enableval],
+              [ql_use_tsop=no])
+AC_MSG_RESULT([$ql_use_tsop])
+if test "$ql_use_tsop" = "yes" ; then
+   AC_DEFINE([QL_ENABLE_THREAD_SAFE_OBSERVER_PATTERN],[1],
+             [Define this if you want to enable 
+              thread-safe observer pattern.])
+   QL_CHECK_BOOST_VERSION_1_58_OR_HIGHER
+   QL_CHECK_BOOST_TEST_THREAD_SIGNALS2_SYSTEM
+else
+   AC_SUBST([BOOST_THREAD_LIB],[""])
+fi
 
 AC_MSG_CHECKING([whether to install examples])
 AC_ARG_ENABLE([examples],
