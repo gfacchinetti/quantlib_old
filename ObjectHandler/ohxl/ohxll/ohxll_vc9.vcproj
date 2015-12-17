@@ -49,7 +49,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..;&quot;C:\Projects\3rdPartyLibs\apache-log4cxx-0.10.0\src\main\include&quot;"
+				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
 				PreprocessorDefinitions="_DEBUG;_WINDOWS;_USRDLL;XLL_EXPORTS;WIN32;LOG4CXX_STATIC"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
@@ -77,16 +77,16 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib log4cxxD.lib"
-				OutputFile="..\..\xll\ObjectHandler-xll-vc90-mt-gd.xll"
+				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
+				OutputFile="..\..\xll\ObjectHandler-xll-vc90-mt-gd-1_7_0.xll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\lib;..\..\..\log4cxx\msvc\lib;&quot;C:\Projects\3rdPartyLibs\apache-log4cxx-0.10.0\projects\Debug\32&quot;"
+				AdditionalLibraryDirectories="..\..\lib;..\..\..\log4cxx\msvc\lib"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="..\..\xll\ObjectHandler-xll-vc90-mt-gd-1_6_0.pdb"
+				ProgramDatabaseFile="..\..\xll\ObjectHandler-xll-vc90-mt-gd-1_7_0.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary="..\..\lib\ObjectHandler-xll-vc90-mt-gd-1_6_0.lib"
+				ImportLibrary="..\..\lib\ObjectHandler-xll-vc90-mt-gd-1_7_0.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -149,7 +149,7 @@
 				AdditionalOptions="/MP"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\..;&quot;C:\Projects\3rdPartyLibs\apache-log4cxx-0.10.0\src\main\include&quot;"
+				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
 				PreprocessorDefinitions="NDEBUG;_WINDOWS;_USRDLL;XLL_EXPORTS;WIN32;LOG4CXX_STATIC"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -178,17 +178,17 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib log4cxx.lib"
-				OutputFile="..\..\xll\ObjectHandler-xll-vc90-mt.xll"
+				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
+				OutputFile="..\..\xll\ObjectHandler-xll-vc90-mt-1_7_0.xll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\lib;..\..\..\log4cxx\msvc\lib;&quot;C:\Projects\3rdPartyLibs\apache-log4cxx-0.10.0\projects\Release\32&quot;"
+				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="..\..\xll\ObjectHandler-xll-vc90-mt-1_6_0.pdb"
+				ProgramDatabaseFile="..\..\xll\ObjectHandler-xll-vc90-mt-1_7_0.pdb"
 				OptimizeReferences="2"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary="..\..\lib\ObjectHandler-xll-vc90-mt-1_6_0.lib"
+				ImportLibrary="..\..\lib\ObjectHandler-xll-vc90-mt-1_7_0.lib"
 				TargetMachine="1"
 			/>
 			<Tool
